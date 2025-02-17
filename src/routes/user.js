@@ -33,6 +33,7 @@ userRouter.get("/feed?page&limit", userAuth, async (req, res) => {
       .skip(skip)
       .limit(limit)
       .select("fromUserId toUserId", feedData);
+    res.json({ feeds: feeds });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
